@@ -27,7 +27,7 @@ if (isset($_POST["add"])) {
         $query = "INSERT INTO users (username, password, email, signup_date) 
         VALUES ('$user_username', '$user_password', '$email', CURRENT_TIMESTAMP)";
         if(mysqli_query($db, $query)){
-            echo "new record in db";
+            echo "<div class='alert alert-success'> New record added in database</div>";
         }else{
             echo "error " . $query . "<br>" . mysqli_error($db);
         }
@@ -44,6 +44,7 @@ define("TITLE", "mySQLi insert with PHP");
 </head>
 <body>
     <div class="container">
+        <h1>MySQL Insert</h1>
         <p class="text-danger"> * Required fields</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <small class="text-danger"> *<?php echo $nameError ?></small>
