@@ -18,14 +18,14 @@ if (isset($_POST["add"])) {
     if( !$_POST["user_password"] ){
         $user_passwordError = "please enter your user_password <br>";
     }else{
-        $user_password= validateFormData( $_POST["user_password"] );
+        $user_password = validateFormData( $_POST["user_password"] );
     }
-    
+    $biography = validateFormData($_POST["biography"]);
     if($user_username && $email && $user_password ){
         
         
-        $query = "INSERT INTO users (username, password, email, signup_date) 
-        VALUES ('$user_username', '$user_password', '$email', CURRENT_TIMESTAMP)";
+        $query = "INSERT INTO users (username, password, email, signup_date, biography) 
+        VALUES ('$user_username', '$user_password', '$email', CURRENT_TIMESTAMP, '$biography')";
         if(mysqli_query($db, $query)){
             echo "<div class='alert alert-success'> New record added in database</div>";
         }else{
@@ -33,6 +33,7 @@ if (isset($_POST["add"])) {
         }
     }
 }
+mysqli_close($db);
 ?>
 <?php
 define("TITLE", "mySQLi insert with PHP");
@@ -53,6 +54,8 @@ define("TITLE", "mySQLi insert with PHP");
             <input type="text" name="email" placeholder="email"/><br><br>
             <small class="text-danger"> *<?php echo $user_passwordError ?></small>
             <input type="password" name="user_password" placeholder="user_password"/><br><br>
+            <small class="text-danger"> *<?php echo $biographyError ?></small>
+            <input type="text" name="biography" placeholder="biography"/><br><br>
             <input name="add" type="submit" value="Add Entry"/>
         </form>
     </div>
