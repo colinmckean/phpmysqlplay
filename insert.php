@@ -51,7 +51,7 @@ define("TITLE", "mySQLi insert with PHP");
             <small class="text-danger"> *<?php echo $emailError ?></small>
             <input type="text" name="email" placeholder="email"/><br><br>
             <small class="text-danger"> *<?php echo $user_passwordError ?></small>
-            <input type="text" name="user_password" placeholder="user_password"/><br><br>
+            <input type="password" name="user_password" placeholder="user_password"/><br><br>
             <input name="add" type="submit" value="Add Entry"/>
         </form>
     </div>
